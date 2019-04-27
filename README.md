@@ -6,6 +6,7 @@ SocketManager:createSocket()
 
 ## send
 ```lua
+-- cocos2dx集成protobuf [https://www.cnblogs.com/chevin/p/6001872.html]
 local stringbuf = protobuf.encode("ReqAccountLogin",{
     accountId="20002",
     password="12345"
@@ -14,6 +15,7 @@ local lenMsg = #stringbuf + 4
 print("msg len " .. lenMsg)
 local moduleId = 101
 local cmd = 1
+-- lua5.1要集成lpack库才能使用string.pack [https://blog.csdn.net/body100123/article/details/60637936]
 local packMsg = string.pack(">ihhA",lenMsg, moduleId, cmd ,stringbuf)
 
 local msgTbl = {
